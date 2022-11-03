@@ -1,0 +1,9 @@
+{% for post in posts%}
+    <h1>
+        {{post.desc}}
+        {{post.author}}
+        
+    </h1>
+    
+{%endfor%}
+<h1><a href="{%url 'add_post'%}">Click</a></h1>

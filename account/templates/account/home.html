@@ -2,7 +2,7 @@
     <p>Welcome {{request.user.firstname}} {{request.user.lastname}}</p>
     {% if request.user.role == 'Creator'%}
         <p> You are registered as a {{request.user.role}}</p>
-        <p><a>Click Here to move to your dashboard</a></p>
+        <p><a href="{% url 'posts'%}">Click Here to move to your dashboard</a></p>
     {%else%}
         <p> You are registered as an {{request.user.role}} </p>
         <p><a>Click Here to move to your dashboard</a></p>
