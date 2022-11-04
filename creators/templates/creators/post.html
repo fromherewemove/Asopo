@@ -4,6 +4,9 @@
         {{post.author}}
         
     </h1>
+    <h1><a href="{%url 'delete_post' post.id%}">Delete Post</a></h1>
+    <h1><a href="{%url 'update_post' post.id%}">Update Post</a></h1>
     
 {%endfor%}
 <h1><a href="{%url 'add_post'%}">Click</a></h1>
+

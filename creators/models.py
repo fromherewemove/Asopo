@@ -8,8 +8,11 @@ class CreatorPost(models.Model):
     image = models.ImageField(blank=True, null=True)
     desc = models.CharField(max_length= 100000000000)
     link = models.URLField(blank=True, null=True)
-    author = models.ForeignKey(User, on_delete = models.CASCADE)
+    author = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
     date_added = models.DateTimeField(default = timezone.now)
+
+    def __str__(self):
+        return self.desc
 
 class CreatorFeed(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
@@ -19,3 +22,6 @@ class CreatorFeed(models.Model):
     link = models.CharField(max_length=2000)
     link1 = models.CharField(max_length=2000)
     link2 = models.CharField(max_length= 2000)
+
+    def __str__(self):
+        return self.description
