@@ -1,0 +1,16 @@
+<h1>Posts</h1>
+
+<a href = "{%url 'add_post'%}"> Add Post</a>
+{%for post in posts%}
+<p>
+    <p>{{post.body}}</p>
+    <p><a>@{{post.author}}</a></p>
+    <p>{{post.created_on}}</p>
+    <a href="{% url 'edit_post' post.id%}"> Edit Post</a>
+    <a href = "{%url 'delete_post' post.id%}">Delete Post</a>
+</p>
+{%empty%}
+<h1>No post available</h1>
+{% endfor %}
+<p><a href = {% url 'profile' request.user.profile.pk%}>Click Here to move to your dashboard</a></p>
+

@@ -2,10 +2,10 @@
     <p>Welcome {{request.user.firstname}} {{request.user.lastname}}</p>
     {% if request.user.role == 'Creator'%}
         <p> You are registered as a {{request.user.role}}</p>
-        <p><a>Click Here to move to your dashboard</a></p>
+        <p><a href = {% url 'profile' request.user.profile.pk%}>Click Here to move to your dashboard</a></p>
     {%else%}
         <p> You are registered as an {{request.user.role}} </p>
-        <p><a>Click Here to move to your dashboard</a></p>
+        <p><a href = {% url 'profile' request.user.profile.pk%}>Click Here to move to your dashboard</a></p>
     {%endif%}
     <a href="{%url 'logout'%}">Logout</a>
 {%else%}

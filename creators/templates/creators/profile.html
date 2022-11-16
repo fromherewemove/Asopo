@@ -1,0 +1,48 @@
+<h1>Profile</h1>
+
+
+
+<p>
+{% if request.user == user %}
+    <a href = "{% url 'profile_edit' profile.pk%}"> Edit Profile</a>
+{%endif%}
+</p>
+
+{%if profile.name%}
+<h3>{{profile.name}}</h3>
+{%endif%}
+
+{%if profile.description%}
+<h3>{{profile.description}}</h3>
+{%endif%}
+
+{%if profile.services%}
+<h3>{{profile.services}}</h3>
+{%endif%}
+<div>
+    <p>Followers: {{ number_of_followers }}</p>
+    {% if user == request.user%}
+    {%else%}
+    {% if is_following %}
+    <form method="POST" action="{% url 'remove_follower' profile.pk%}">
+        {%csrf_token%}
+        <button type='submit'>Unfollow</button>
+
+    </form>
+    {%else%}
+    <form method="POST" action="{% url 'add_follower' profile.pk%}">
+        {%csrf_token%}
+        <button type='submit'>Follow</button>
+
+    </form>
+    {%endif%}
+    {%endif%}
+</div>
+
+{% for post in posts%}
+    <p>{{post.body}}</p>
+    <p><a href = "{% url 'profile' post.author.profile.pk %}">@{{post.author}}</a></p>
+    <p>{{post.created_on}}</p>
+{%endfor%}
+
+<a href="{%url 'add_post'%}"> Create Post</a>
