@@ -4,7 +4,7 @@
 {%for post in posts%}
 <p>
     <p>{{post.body}}</p>
-    <p><a>@{{post.author}}</a></p>
+    <p><a href = "{% url 'profile' post.author.profile.pk %}">@{{post.author}}</a></p>
     <p>{{post.created_on}}</p>
     <a href="{% url 'edit_post' post.id%}"> Edit Post</a>
     <a href = "{%url 'delete_post' post.id%}">Delete Post</a>

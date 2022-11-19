@@ -7,6 +7,25 @@
     <a href = "{% url 'profile_edit' profile.pk%}"> Edit Profile</a>
 {%endif%}
 </p>
+<div>
+    <p> Followers: {{number_of_followers}}</p>
+    {%if user == request.user%}
+    {%else%}
+    
+    {%if is_following %}
+    <form method="POST" action="{%url 'remove_follower' profile.pk %}">
+        {%csrf_token%}
+        <button type='submit'>Unfollow</button>
+    </form>
+    {%else%}
+    <form method="POST" action="{%url 'add_follower' profile.pk %}">
+        {%csrf_token%}
+        <button type='submit'>Follow</button>
+    </form>
+
+    {%endif%}
+    {%endif%}
+</div>
 
 {%if profile.name%}
 <h3>{{profile.name}}</h3>
@@ -19,25 +38,6 @@
 {%if profile.services%}
 <h3>{{profile.services}}</h3>
 {%endif%}
-<div>
-    <p>Followers: {{ number_of_followers }}</p>
-    {% if user == request.user%}
-    {%else%}
-    {% if is_following %}
-    <form method="POST" action="{% url 'remove_follower' profile.pk%}">
-        {%csrf_token%}
-        <button type='submit'>Unfollow</button>
-
-    </form>
-    {%else%}
-    <form method="POST" action="{% url 'add_follower' profile.pk%}">
-        {%csrf_token%}
-        <button type='submit'>Follow</button>
-
-    </form>
-    {%endif%}
-    {%endif%}
-</div>
 
 {% for post in posts%}
     <p>{{post.body}}</p>

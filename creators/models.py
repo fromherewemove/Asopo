@@ -23,3 +23,10 @@ class CreatorFeed(models.Model):
     followers = models.ManyToManyField(User, blank=True, related_name= 'followers')
 
         
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        CreatorFeed.objects.create(user=instance)
+
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
