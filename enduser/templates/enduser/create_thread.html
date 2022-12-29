@@ -1,0 +1,22 @@
+<div>
+    <a href="{% url 'inbox'%}">Inbox</a>
+</div>
+<div>
+    <h3>Start a convo</h3>
+</div>
+<div>
+    {% if messages%}
+        {%for message in messages%}
+        <div>
+            {{message}}
+        </div>
+        {%endfor%}
+    {%endif%}
+    <form method="POST">
+        {%csrf_token%}
+        <p>Enter name of recipient</p>
+        {{form.as_p}}
+
+        <input type='submit' value='Continue'/>
+    </form>
+</div>

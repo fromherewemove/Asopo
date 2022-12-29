@@ -10,6 +10,9 @@ urlpatterns = [
     path('profile/edit/<int:pk>', ProfileEdit.as_view(), name='profile_edit'),
     path('profile/<int:pk>/followers/add', AddFollower.as_view(), name = 'add_follower'),
     path('profile/<int:pk>/followers/remove', RemoveFollower.as_view(), name = 'remove_follower'),
+    path('inbox/', ListThreads.as_view(), name='inbox'),
+    path('inbox/<int:pk>/', ThreadView.as_view(), name='thread'),
+    path('inbox/<int:pk>/create_message', CreateMessage.as_view(), name = 'create_message')
 
     
 ]

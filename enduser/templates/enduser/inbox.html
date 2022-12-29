@@ -1,0 +1,16 @@
+<div>
+    <h1>Your Conversations</h1>
+</div>
+
+<form method="GET" action = "{% url 'create_thread'%}">
+
+    <input type='submit' value='Start a convo'/>
+</form>
+
+{% for thread in threads.all%}
+    <div>
+        {{thread.user}} - {{thread.receiver}}
+    </div>
+    <a href = "{% url 'thread' thread.pk%}">See Thread</a>
+
+{%endfor%}

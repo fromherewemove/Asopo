@@ -36,3 +36,8 @@ class CustomLogin(LoginView):
     redirect_authenticated_user = True
     def get_success_url(self):
         return reverse_lazy('home')
+
+class Landing(ListView):
+    model = User
+    context_object_name = 'landing'
+    template_name = 'landing.html'

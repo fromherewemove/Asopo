@@ -1,0 +1,38 @@
+<div>
+    {%if thread.receiver == request.user%}
+        <h5>{{thread.user}}</h5>
+    {%else%}
+        <h5>{{thread.receiver}}</h5>
+    {%endif%}
+</div>
+
+{%if message_list.all.count == 0%}
+    <div> No messages</div>
+{%endif%}
+
+
+{%for message in message_list%}
+<div>
+    {%if message.sender_user == request.user%}
+    {% if message.image %}    
+    <div>
+        <img src="{{message.image.url}}"/>
+    </div>
+    {%endif%}
+    <p>{{message.body}} Me</p>
+    {%else%}
+        <p>{{message.body}} Other person</p>
+    {%endif%}
+</div>
+{%endfor%}
+
+
+
+<div>
+    <form method="POST" action="{% url 'create_message' thread.pk%}">
+        {%csrf_token%}
+        {{form.as_p}}
+
+        <input type='submit'value='Send text'/>
+    </form>
+</div>

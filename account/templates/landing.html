@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asopo</title>
+    <link rel='stylesheet' href="{% static 'main.css'%}">
+  </head>
+  <body>
+    {%block body%}
+    <section class='outer'>
+      <div class ='circle'></div>
+        <header>
+          <a href="{%url 'landing'%}">
+            <img src="{% static 'account/images/logo.png'%}" class='logo'/>
+          </a>
+          <ul>
+            <li><a href = "{%url 'landing'%}" id='other_link_1'>Home</a></li>
+            <li><a href = "{%url 'landing'%}" id='other_link_2'>Menu</a></li>
+            <li><a href = "{%url 'landing'%}" id='other_link_3'>About Us</a></li>
+            <li><a href = "{%url 'landing'%}" id='other_link_4'>Contact Us</a></li>
+          </ul>
+        </header>
+        
+        
+        <div class="content">
+          <div class="textBox">
+            <h2>
+              <div id='other_text'>Welcome To</div> <span class='main_text'>Asopo</span><br> <div id='another_text'>Linking Africa's Creators to Consumers</div>
+            </h2>
+            
+          </div>
+          <div class='imgBox'>
+            
+            <a href="{%url 'login'%}" class='main_link_1'>Creator</a>
+            <a href="{%url 'login'%}" class='main_link_2'>Consumer</a>
+            
+          </div>
+        </div>
+        <ul class="thumb">
+          <li><img src="{% static 'account/images/africa_red.png'%}" onclick="changeCircleColor('#828281'); changeBackground('#A9C0D1'); changeText('#AF8C4A','#828281'); changeLinks('#AF8C4A','#AF8C4A')"/></li>
+          <li><img src="{% static 'account/images/africa_green.png'%}" onclick="changeCircleColor('#266A2E'); changeBackground('#593E1A'); changeText('#6B78B4','#79BEDB'); changeLinks('#6B78B4','#6B78B4')" /></li>
+          <li><img src="{% static 'account/images/africa_black.png'%}" onclick="changeCircleColor('#BEB5B0'); changeBackground('#2D241A'); changeText('#155B78','#BEB5B0'); changeLinks('#155B78','#155B78')" /></li>
+
+        </ul>
+       
+        
+      {%endblock%}
+        
+    </section>
+ 
+    <main>
+      
+
+      
+    </main>
+    
+  
+
+    <script type="text/javascript">
+      function imgSlider(anything){
+        document.querySelector('.Asopo').src = anything;
+      }
+      function changeCircleColor(color){
+        const circle = document.querySelector('.circle');
+        circle.style.background = color;
+        
+
+      }
+      function changeBackground(other){
+        const back = document.querySelector('.outer');
+        back.style.background = other
+      }
+      function changeText(other, another){
+        const texting = document.querySelector('.main_text');
+        texting.style.color = other
+        const home_text = document.querySelector('#other_text')
+        home_text.style.color = another
+        const more_text = document.querySelector('#another_text')
+        more_text.style.color = another
+        const more_text_1 = document.querySelector('#other_link_1')
+        more_text_1.style.color = another
+        const more_text_2 = document.querySelector('#other_link_2')
+        more_text_2.style.color = another
+        const more_text_3 = document.querySelector('#other_link_3')
+        more_text_3.style.color = another
+        const more_text_4 = document.querySelector('#other_link_4')
+        more_text_4.style.color = another
+      }
+      function changeLinks(linking){
+        const link_1 = document.querySelector('.main_link_1');
+        const link_2 = document.querySelector('.main_link_2')
+        link_1.style.background = linking
+        link_2.style.background = linking
+        
+      }
+    </script>
+	
+  </body>
+</html>

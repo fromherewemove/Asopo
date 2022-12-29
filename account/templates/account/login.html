@@ -1,6 +1,126 @@
-<h1>Login</h1>
-<form method='POST'>
-    {%csrf_token%}
-    {{form.as_p}}
-    <input type='submit' value='login'/>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asopo</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+
+  <body>
+    <div class="box">
+        <div class='form'>
+          <h2>Login</h2>
+          <form method='POST'>
+            {%csrf_token%}
+            {% for field in form %}
+                <div class='inputBox'>
+                    <div class='input'>{{field}}</div>
+                    <span for='{{ field.id_for_label }}' class='label'>{{field.name.capitalize}}:</span>
+                    <i></i>
+                </div>
+            {%endfor%}
+                <div class='links'>
+                  <a href = "{%url 'create'%}">Sign up</a>
+                </div>
+                <input type='submit' value='Login'/>
+
+                
+        
+            
+            
+            </form>
+            
+        </div>
+    </div>
+  </body>
+  <style>
+    *{
+        margin:0;
+        padding:0;
+        box_sizing: border_box;
+        
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #23242a;
+
+    }
+    .box{
+        position: relative;
+        width: 380px;
+        height: 420px;
+        background: #1c1c1c;
+        border-radius: 8px;
+        overflow: hidden;
+
+    }
+    .box::before{
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px;
+        height: 420px;
+        background: linear-gradient(0deg, transparent,#45f3ff,#45f3ff);
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+
+    }
+    .box::after{
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px;
+        height: 420px;
+        background: linear-gradient(0deg, transparent,#45f3ff,#45f3ff);
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+
+    }
+    @keyframes animate{
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+    .form{
+      position: absolute;
+      inset: 2px;
+      border-radius: 8px;
+      background: #28292d;
+      z-index: 10;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+
+    }
+    .form h2{
+      color: #45f3ff;
+      font-weight: 500;
+      text-align: center;
+      letter-spacing: 0.1em;
+
+
+    }
+    .inputBox{
+      position: relative;
+      width: 300px;
+      margin-top: 35px;
+
+    }
+    .inputBox .input{
+      position: relative;
+      
+    }
+  </style>
+</html>
+

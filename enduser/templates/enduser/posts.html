@@ -1,0 +1,13 @@
+<h1>Posts</h1>
+
+{%for post in posts%}
+<p>
+    <p>{{post.body}}</p>
+    <p><a href = "{% url 'profile' post.author.profile.pk %}">@{{post.author}}</a></p>
+    <p>{{post.created_on}}</p>
+</p>
+{%empty%}
+<h1>No post available</h1>
+{% endfor %}
+<p><a href = {% url 'user_profile' request.user.profile.pk%}>Click Here to move to your dashboard</a></p>
+

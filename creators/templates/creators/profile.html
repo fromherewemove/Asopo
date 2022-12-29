@@ -5,6 +5,7 @@
 <p>
 {% if request.user == user %}
     <a href = "{% url 'profile_edit' profile.pk%}"> Edit Profile</a>
+    <a href = "{% url 'inbox'%}">Enter Inbox</a>
 {%endif%}
 </p>
 <div>
@@ -39,10 +40,18 @@
 <h3>{{profile.services}}</h3>
 {%endif%}
 
+<h2>{{user.email}}</h2>
+
 {% for post in posts%}
     <p>{{post.body}}</p>
     <p><a href = "{% url 'profile' post.author.profile.pk %}">@{{post.author}}</a></p>
     <p>{{post.created_on}}</p>
 {%endfor%}
 
+{% if request.user != user %}
+<p>THis isnt mine</p>
+{%else%}
 <a href="{%url 'add_post'%}"> Create Post</a>
+<p>This is mine</p>
+{%endif%}
+<a href = "{% url 'posts'%}"> Move back to posts</a>

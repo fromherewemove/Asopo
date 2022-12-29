@@ -1,0 +1,26 @@
+<h1>Profile</h1>
+
+
+
+<p>
+{% if request.user == user %}
+    <a href = "{% url 'user_profile_edit' profile.pk%}"> Edit Profile</a>
+    <p>This is mine</p>
+    <a href = "{% url 'inbox'%}">Enter Inbox</a>
+{%else%}
+<p>This isnt mine</p>
+{%endif%}
+</p>
+
+    
+
+
+<p>{{user.email}}</p>
+
+
+{%if profile.profileImg%}
+<h3>{{profile.profileImg}}</h3>
+{%endif%}
+
+<p><a href="{% url 'creator_posts'%}">View Posts</a><p>
+
